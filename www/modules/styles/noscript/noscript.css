@@ -1,0 +1,49 @@
+body {
+	font-family: Geneva, Arial, Helvetica, sans-serif;
+	background-color: rgb(22, 22, 22);
+	color: rgb(204, 204, 204);
+}
+
+footer {
+	background-color: rgb(7, 7, 7);
+}
+/*Classes*/
+
+
+.top-menu {
+
+}
+
+.standard-menu {
+
+}
+
+.content {
+	width: 79%;
+	height: 100%;
+	margin-left: 21%;
+	background-color: rgb(30, 30, 30);
+}
+
+.block2-list {
+	width: 100%;
+	clear:both;
+}
+
+.b2l-item {
+	float: left;
+	width: 40%;
+	margin: 20px;
+}
+
+.poly-block-list {
+	width: 100%;
+	clear:both;
+}
+
+.pbl-item {
+	float: left;
+	width: 300px;
+	height: 300px;
+	margin: 10px;
+}

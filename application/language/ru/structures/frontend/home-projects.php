@@ -1,0 +1,7 @@
+<?php
+$structure = array ( 'title' => 'Наши проекты', 'subtitle' => 'Список всего, что мы делали', 'slider' => array ( 0 => array ( 'title' => '', 'subtitle' => '', 'image_large' => 'modules/frontend/images/home/projects/large/1.jpg', 'image_thumb' => 'modules/frontend/images/home/projects/thumbs/1.jpg', ), 1 => array ( 'title' => '', 'subtitle' => '', 'image_large' => 'modules/frontend/images/home/projects/large/2.jpg', 'image_thumb' => 'modules/frontend/images/home/projects/thumbs/2.jpg', ), 2 => array ( 'title' => '', 'subtitle' => '', 'image_large' => 'modules/frontend/images/home/projects/large/3.jpg', 'image_thumb' => 'modules/frontend/images/home/projects/thumbs/3.jpg', ), 3 => array ( 'title' => '', 'subtitle' => '', 'image_large' => 'modules/frontend/images/home/projects/large/4.jpg', 'image_thumb' => 'modules/frontend/images/home/projects/thumbs/4.jpg', ), 4 => array ( 'title' => '', 'subtitle' => '', 'image_large' => 'modules/frontend/images/home/projects/large/5.jpg', 'image_thumb' => 'modules/frontend/images/home/projects/thumbs/5.jpg', ), ),
+
+    'meta' => array(
+        'keywords' => 'Проекты студии Project-antary',
+        'description' => 'Проекты нашей студии, отчёты о проделанной работе, собранные на одной странице.'
+    ));

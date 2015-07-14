@@ -1,0 +1,14 @@
+#sitemap ul {
+    padding-left: 40px;
+}
+
+.list-3 li {
+    background-color: rgba(80, 80, 80, 0.1);
+}
+
+.footer-line1,
+.footer-line2,
+.header_line1,
+.header_line2 {
+    display: none;
+}

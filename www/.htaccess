@@ -1,0 +1,67 @@
+    AddDefaultCharset UTF-8
+
+    Options +FollowSymLinks
+    Options -Indexes
+
+    <IfModule !mod_rewrite.c>
+        ErrorDocument 404 /index.php
+    </IfModule>
+
+    # Увеличиваем объем загрузки файла
+    php_value upload_max_filesize 10M
+    php_value post_max_size 10M
+    php_value max_execution_time 200
+    php_value max_input_time 200
+
+    # Склеивание Домена с WWW
+    <IfModule mod_rewrite.c>
+        #RewriteEngine on
+        #RewriteCond %{HTTP_HOST} ^example.ru
+        #RewriteRule (.*) http://www.example.ru/$1 [R=301,L]
+		RewriteEngine on
+		RewriteCond %{HTTP_HOST} ^www.example.ru$ [NC]
+		RewriteRule ^(.*)$ http://example.ru/$1 [R=301,L]
+
+    </IfModule>
+
+    # Удаляем index.php в URL
+    <IfModule mod_rewrite.c>
+        RewriteEngine on
+        RewriteRule ^index\.php/(.+)$ http://example.ru/$1 [R=301,L]
+    </IfModule>
+    <IfModule mod_rewrite.c>
+        RewriteEngine on
+        RewriteCond %{THE_REQUEST} ^[A-Z]{3,9}\ /index\.php\ HTTP/
+        RewriteRule ^index\.php$ http://example.ru/ [R=301,L]
+    </IfModule>
+
+    # Удаляем слеш в конце URL
+    <IfModule mod_rewrite.c>
+        RewriteEngine on
+        RewriteCond %{HTTP_HOST} (.*)
+        RewriteCond %{REQUEST_URI} /$ [NC]
+        RewriteRule ^(.*)(/)$ $1 [L,R=301]
+    </IfModule>
+
+    # Для работы WebAntarix
+    <IfModule mod_rewrite.c>
+        RewriteEngine on
+        RewriteBase /
+        RewriteCond $1 !^(index\.php|plugins|modules|archive|sitemap\.xml|robots\.txt)
+        RewriteCond %{REQUEST_URI} !\.(css¦js¦jpg¦gif¦png¦ico)$
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteRule ^(.*)$ /index.php?/$1 [L]
+    </IfModule>
+
+	<IfModule mod_rewrite.c>
+		RewriteEngine on
+		RewriteCond %{HTTP_REFERER} .
+		RewriteCond %{HTTP_REFERER} !^http://([^.]+.)?example. [NC]
+		RewriteCond %{HTTP_REFERER} !google. [NC]
+		RewriteCond %{HTTP_REFERER} !search?q=cache [NC]
+		RewriteCond %{HTTP_REFERER} !msn. [NC]
+		RewriteCond %{HTTP_REFERER} !yahoo. [NC]
+		RewriteCond %{REQUEST_URI} !^/stop_image.jpg$
+		RewriteRule .(gif|jpg|png)$ /stop_image.jpg [NC,L]
+	</IfModule>

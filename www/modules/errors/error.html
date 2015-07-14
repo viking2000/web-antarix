@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Error - {error_code}</title>
+    <meta name="robots" content="none"/>
+
+    <style>
+        body, html {
+            width: 100%; height: 100%;
+            margin: 0;
+            padding: 0;
+            background-color: #000000;
+            font-family: 'Open Sans Condensed', sans-serif;
+        }
+
+        .horLine{
+            min-width: 70%;
+            width: 70%;
+            height: 100px;
+            background: #555;
+            background: linear-gradient(to right, #555, #000);
+            position: absolute;
+            top: 100px;
+            border-top: 10px white solid;
+            border-bottom: 10px white solid;
+
+        }
+
+        .centerBlock {
+            width: 100px;
+            height: 100px;
+            background-color: #cb0503;
+            position: absolute;
+            color: #ffffff;
+            font-size: 6em;
+            text-align: center;
+            left: 100px;
+            top: 110px;
+
+        }
+
+        .errorBlock {
+            width: 30%;
+            height: 100px;
+            position: absolute;
+            color: #ffffff;
+            font-size: 4em;
+            padding-top: 30px;
+            vertical-align: bottom;
+            left: 200px;
+            top: 100px;
+
+        }
+
+        .textBlock {
+            width: 65%;
+            height: 40%;
+            position: absolute;
+            background-color: #FFF;
+            color: #383839;
+            font-size: 2em;
+            padding-left: 5%;
+            padding-top: 10px;
+            left: 0;
+            top: 300px;
+
+        }
+
+    </style>
+
+</head>
+<body>
+    <div class="textBlock">{error_text}</div>
+	<div class="horLine"></div>
+
+    <div class="centerBlock">E</div>
+    <div class="errorBlock">rror - {error_code}</div>
+
+{error_text}
+</body>
+</html>

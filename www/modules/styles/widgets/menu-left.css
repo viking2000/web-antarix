@@ -1,0 +1,62 @@
+.menu-left {
+    width: 100%;
+    padding-left:0;
+    margin-top:0;
+    background: url('../images/widgets/menu/back.jpg') rgb(22, 22, 22);
+    height: 100%;
+    padding-right: 5px;
+}
+
+.ml-section-header {
+    font-family: "Courier New", Courier, Lucidatypewriter;
+    font-weight: bolder;
+    background: url('../images/widgets/menu/dividing_line2.jpg') no-repeat right 0;
+    width: 97%;
+    text-align: right;
+    padding-top: 7px;
+    height: 25px;
+}
+
+.ml-logo{
+    margin-bottom: -70px;
+}
+
+.ml-logo-header{
+   font-family: 'Jura', sans-serif;
+    text-align: center;
+}
+
+.ml-selected,
+.ml-item {
+    display: block;
+    text-decoration: none;
+    margin: 10px 0px;
+    padding-left: 5%;
+    padding-top: 10px;
+    height: 40px;
+    font-size: x-large;
+    clear:both;
+}
+
+.ml-item {
+    width: 92%;
+    background: url('../images/widgets/menu/button_sprite.png') no-repeat right 0;
+    color: rgb(125, 125, 125);
+}
+
+.ml-item:hover {
+
+    background: url('../images/widgets/menu/button_sprite.png') no-repeat right -50px;
+    color: rgb(231, 231, 231);
+}
+
+.ml-item:active {
+    background: url('../images/widgets/menu/button_sprite.png') no-repeat right -100px;
+    color: rgb(70, 70, 70);
+}
+
+.ml-selected {
+    width: 96%;
+    background: url('../images/widgets/menu/button_selected.png') no-repeat right 0;
+    color: rgb(163, 163, 163);
+}
