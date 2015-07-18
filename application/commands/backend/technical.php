@@ -43,3 +43,89 @@ class Clean_errors  extends Command {
         self::set_client_command('refresh', array('url' => 'self') );
     }
 }
+
+class Create_sitemap  extends Command {
+
+    public function execute()
+    {
+        if ( ! file_exists(FCPATH.'sitemap.xml') )
+        {
+            self::set_result(FALSE);
+            return;
+        }
+
+        $sitemap    = simplexml_load_file(FCPATH.'sitemap.xml');
+        $map_model  = array();
+        $home_point =& $map_model;
+
+        foreach ($sitemap->url as $link)
+        {
+            $url_item     = parse_url(reset($link->loc), PHP_URL_PATH);
+            $segment_item = substr($url_item, 1);
+            if ( empty($segment_item) )
+            {
+                continue;
+            }
+
+            $map_model    =& $home_point;
+            $segment_item = explode('/', $segment_item);
+            $last_key     = NULL;
+            $count        = count($segment_item);
+            $i            = 0;
+            foreach ($segment_item as $item)
+            {
+                ++$i;
+                if ( ! isset($map_model[$item]) )
+                {
+                    $map_model[$item] = array();
+                }
+
+                if ($i < $count)
+                {
+                    if ( ! is_array($map_model[$item]) )
+                    {
+                        $map_model[$item] = array();
+                    }
+
+                    $map_model =& $map_model[$item];
+                }
+
+                $last_key = $item;
+            }
+
+            $map_model[$last_key] = $url_item;
+        }
+
+        $map_html   = $this->_map_to_html($home_point);
+        $path       = APPPATH.'views/frontend/sitemap.php';
+
+        $result = file_put_contents($path, $map_html);
+        self::set_result($result);
+    }
+
+    protected function _map_to_html($map)
+    {
+        $html = '<ul>';
+        foreach ($map as $key => $value)
+        {
+            $name = get_string('url_naming', $key);
+            if ( empty($name) )
+            {
+                $name = $key;
+            }
+
+            if ( is_array($value) )
+            {
+                $html .= '<li>'.$name;
+                $html .= $this->_map_to_html($value);
+                $html .= '</li>';
+            }
+            else
+            {
+                $html .= '<li><a href="'.base_url($value)."\">{$name}</a></li>";
+            }
+        }
+
+        return $html.'</ul>';
+    }
+}

@@ -78,6 +78,56 @@ if ( ! function_exists('get_full_url') )
     }
 }
 
+if ( ! function_exists('get_article_path') )
+{
+    function get_article_path($article, $type = NULL, $with_root = FALSE)
+    {
+        if ( empty($type) )
+        {
+            $type = '_none-type';
+        }
+
+        $lang = '';
+        if ( Buffer::get(URL_LANG)  )
+        {
+            $lang = Buffer::get(URL_LANG) . '/';
+        }
+
+        $path = "articles/{$lang}{$type}/{$article}";
+
+        if ($with_root)
+        {
+            $path = APPPATH .'views/'. $path.'.php';
+        }
+
+        return $path;
+    }
+}
+
+if ( ! function_exists('image_url') )
+{
+    function image_url($path)
+    {
+        if (strpos($path, './') !== FALSE)
+        {
+            $path = str_replace('./', '', $path);
+        }
+
+        $first_symbol = $path{0};
+        if ($first_symbol == '/')
+        {
+            $path = substr($path, 1);
+        }
+
+        if ( ! file_exists('./modules/images/'.$path ) )
+        {
+            return get_full_url() . 'modules/images/no-image.jpg';
+        }
+
+        return get_full_url() . 'modules/images/'.$path;
+    }
+}
+
 if ( ! function_exists('get_path_url') )
 {
     function get_path_url()

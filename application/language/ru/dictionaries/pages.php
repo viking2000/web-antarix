@@ -1,20 +1,12 @@
 <?php  if ( ! defined('BASEPATH')) exit('No direct script access allowed');
 $words = array();
-$words['title'] = 'Project-Antary';
-$words['faq_title'] = 'Часто задаваемые вопросы';
-$words['faq_subtitle'] = 'И их знаменитые ответы';
-$words['faq_question'] = 'Задайте интересующий вас вопрос, наши специалисты постараются на него ответить';
-$words['game_subtitle'] = 'Описание игр';
-
-$words['support_title'] = 'Техподдержка';
-$words['support_subtitle'] = 'Официальная страница техподдержки';
-
+$words['amanita'] = 'Студия Мухомор';
 $words['sitemap_title'] = 'Карта сайта';
-$words['sitemap_subtitle'] = 'Структура содержимого';
+$words['about_title'] = 'О нас';
 
-$words['platform'] = 'Платформа';
-$words['genre'] = 'Жанр';
-$words['release_date'] = 'Дата выпуска';
-$words['name'] = 'Название';
-$words['description'] = 'Описание';
-$words['scree_shot'] = 'Скриншоты игры';
+$words['help'] = 'Помощь';
+$words['feedback'] = 'Обратная связь';
+$words['navigation'] = 'Навигация';
+$words['site_map'] = 'Карта сайта';
+$words['all_right'] = 'Все права защищены, всеми мухоморами мира!';
+

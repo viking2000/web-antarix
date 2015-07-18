@@ -54,7 +54,7 @@ class apply_data  extends Command {
         $date        = date('c');
         $article_url = config('settings', 'base_url')."{$this->lang}/articles/read/{$this->id}";
 
-        $site_map    = new SimpleXMLElement(file_get_contents('./sitemap.xml'));
+        $site_map    = simplexml_load_file(FCPATH.'sitemap.xml');//new SimpleXMLElement(file_get_contents('./sitemap.xml'));
         $elements    = $site_map->url;
         foreach ($elements as $element)
         {

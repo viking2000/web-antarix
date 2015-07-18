@@ -19,7 +19,7 @@ $config['cache']['page_header'] = FALSE; // компилировать ли ст
 $config['cache']['web_lifetime'] = 28800;//Время жизни сборки стилей
 
 $config['web']['scripts']  = array('system/jquery-1.8.3');//список подключаемых js файлов
-$config['web']['styles']  = array('system/import','system/reset', 'pages/frontend' );//список подключаемх css файлов
+$config['web']['styles']  = array('system/import','system/reset', 'pages/frontend', 'pages/frontend-base_style' );//список подключаемх css файлов
 $config['web']['noscript']  = array('noscript');//стили при отключённом js
 $config['web']['constants'] = array();//Константы
 

@@ -30,8 +30,8 @@
 .path_dispatcher-item-first {
     float: left;
     height: 1.3em;
-    width: 150px;
-    margin-left: -150px;
+    width: 50px;
+    margin-left: -50px;
     background: url('../images/widgets/menu/center.png') repeat-x center;
 }
 
