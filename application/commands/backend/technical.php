@@ -44,6 +44,17 @@ class Clean_errors  extends Command {
     }
 }
 
+class Clean_log_cron  extends Command {
+
+    const Q_TRUNCATE_SESSION = 'TRUNCATE TABLE `log_cron`';
+
+    public function execute()
+    {
+        db::simple_query(self::Q_TRUNCATE_SESSION );
+        self::set_client_command('refresh', array('url' => 'self') );
+    }
+}
+
 class Create_sitemap  extends Command {
 
     public function execute()
@@ -116,7 +127,7 @@ class Create_sitemap  extends Command {
 
             if ( is_array($value) )
             {
-                $html .= '<li>'.$name;
+                $html .= '<li><span class="sitemap-header">'.$name.'</span>';
                 $html .= $this->_map_to_html($value);
                 $html .= '</li>';
             }

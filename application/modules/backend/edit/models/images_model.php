@@ -7,27 +7,21 @@
  * To change this template use File | Settings | File Templates.
  */
 
-class Structure_model extends File_model {
+class Images_model extends File_model {
 
     public function __construct()
     {
         $options = array(
-            'reference' => APPPATH.'language'
+            'reference' => './modules/images'
         );
 
         parent::__construct($options);
     }
 
-    public function get_lang_files()
+    public function get_images()
     {
-        $this->query['where'] = '*.php';
+        $this->query['where'] = '*.{jpg,jpeg,png,gif}';
         $list = $this->rows();
-        foreach ($list as &$item)
-        {
-            $item = str_replace(APPPATH.'language/', '', $item);
-            $item = str_replace('.php', '', $item);
-        }
-
         return $list;
     }
 }

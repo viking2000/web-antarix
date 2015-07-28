@@ -3,6 +3,7 @@
     <div class="toolbar_button" id="reset-cache">Cache reset</div>
     <div class="toolbar_button" id="reset-session">Session reset</div>
     <div class="toolbar_button" id="clean-errors">Clean errors</div>
+    <div class="toolbar_button" id="clean-log-cron">Clean log cron</div>
     <div class="toolbar_button" id="create-sitemap">Create sitemap</div>
     <?=isset($top_tool_bar)? $top_tool_bar : ''; ?>
 </section>
@@ -29,6 +30,10 @@
 
     $("#clean-errors").click(function() {
         toServer("technical", "clean_errors", {}, func_list);
+    } );
+
+    $("#clean-log-cron").click(function() {
+        toServer("technical", "clean_log_cron", {}, func_list);
     } );
 
     $("#create-sitemap").click(function() {

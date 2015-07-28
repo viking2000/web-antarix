@@ -1,1 +1,5 @@
-<p>text&nbsp;text&nbsp;text&nbsp;text&nbsp;text&nbsp;text&nbsp;text&nbsp;text&nbsp;text</p>
+<p>Второй интересный виджет &ndash; это&nbsp;<strong>Сообщества.</strong></p>
+
+<p>Виджет для сообществ связывает сайт с какой-либо группой или официальной страницей&nbsp;<strong>ВКонтакте</strong>. С его помощью легко подписаться на новости сообщества не покидая вашего ресурса.</p>
+
+<p>Может отображаться в нескольких видах.<img class="center" src="http://example.ru/modules/images/articles/test1/consol.png" /></p>

@@ -121,10 +121,10 @@ if ( ! function_exists('image_url') )
 
         if ( ! file_exists('./modules/images/'.$path ) )
         {
-            return get_full_url() . 'modules/images/no-image.jpg';
+            return base_url() . 'modules/images/no-image.jpg';
         }
 
-        return get_full_url() . 'modules/images/'.$path;
+        return base_url() . 'modules/images/'.$path;
     }
 }
 
@@ -143,18 +143,20 @@ if ( ! function_exists('base_url') )
 {
     function base_url($path = '', $is_add_ap = FALSE)
     {
-        if ( ! empty($path) )
+        if (  empty($path) )
         {
-            if (strpos($path, './') !== FALSE)
-            {
-                $path = str_replace('./', '', $path);
-            }
+            return config('settings', 'base_url');
+        }
 
-            $first_symbol = $path{0};
-            if ($first_symbol == '/')
-            {
-                $path = substr($path, 1);
-            }
+        if (strpos($path, './') !== FALSE)
+        {
+            $path = str_replace('./', '', $path);
+        }
+
+        $first_symbol = $path{0};
+        if ($first_symbol == '/')
+        {
+            $path = substr($path, 1);
         }
 
         if ($is_add_ap)

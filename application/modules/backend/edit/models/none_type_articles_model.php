@@ -7,27 +7,30 @@
  * To change this template use File | Settings | File Templates.
  */
 
-class Structure_model extends File_model {
+class None_type_articles_model extends File_model {
 
     public function __construct()
     {
         $options = array(
-            'reference' => APPPATH.'language'
+            'reference' => APPPATH.'views/articles'
         );
 
         parent::__construct($options);
     }
 
-    public function get_lang_files()
+    public function get_articles()
     {
         $this->query['where'] = '*.php';
         $list = $this->rows();
+        $result = array();
         foreach ($list as &$item)
         {
-            $item = str_replace(APPPATH.'language/', '', $item);
-            $item = str_replace('.php', '', $item);
+            if (strpos($item, '_none-type') > -1)
+            {
+                $result[] = $item;
+            }
         }
 
-        return $list;
+        return $result;
     }
 }

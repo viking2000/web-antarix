@@ -13,10 +13,10 @@ class Special extends Controller
 
     public function index($opt = array() )
     {
-        $this->contact();
+        $this->contacts();
     }
 
-    public function contact()
+    public function contacts()
     {
         Builder::set_title( get_string('pages', 'feedback') );
 		Builder::add_meta('robots', 'none', TRUE);
@@ -26,13 +26,17 @@ class Special extends Controller
 
         Builder::add_constant( array('COMMAND' => 'home', 'ACTION' => 'set_contact') );
 
-
         //--------------Contents-----------------
         $contents = get_structure('frontend/contact');
         $contents = $this->view('contacts', $contents, TRUE);
 
+        $nav = array();
+        $nav[get_string('url_naming', 'home')] = '';
+        $nav[get_string('url_naming', 'contacts')] = 'special/contact';
+
         //------------------Total page------------
         $page               = get_structure('frontend/home-contact');
+        $page['nav']        =& $nav;
         $page['content']    = $contents;
         $this->view('frontend/frontend', $page);
     }
@@ -43,7 +47,12 @@ class Special extends Controller
         Builder::add_css('pages/frontend-sitemap');
         Builder::set_title( get_string('pages', 'sitemap_title') );
 
+        $nav = array();
+        $nav[get_string('url_naming', 'home')] = '';
+        $nav[get_string('url_naming', 'sitemap')] = 'special/sitemap';
+
         $page               = array();
+        $page['nav']        =& $nav;
         $page['content']    = $this->view('frontend/sitemap', array(), TRUE);
         $this->view('frontend/frontend', $page);
     }

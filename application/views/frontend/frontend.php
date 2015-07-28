@@ -29,10 +29,10 @@
         </div>
     </div>
     <div class="main-header-logo">
-        <img height="190" src="/modules/styles/images/pages/Logo.png" />
+        <img height="190" src="<?=image_url('pages/Logo.png');?>" />
         <h1><?=get_string('pages', 'amanita')?></h1>
     </div>
-    <img height="50" class="main-header-arrow" src="/modules/styles/images/pages/arrow.png" />
+    <img height="50" class="main-header-arrow" src="<?=image_url('pages/arrow.png');?>" />
 </header>
 <?php
     if ( isset($submenu) )
@@ -49,7 +49,7 @@
             <?=isset($content)? $content : ''; ?>
         </section>
         <aside class="sideRight">
-            <?=isset($left)? $left : ''; ?>
+            <?=isset($right)? $right : ''; ?>
         </aside>
     </div>
 <br class="clear" />
@@ -74,7 +74,7 @@
 <br class="clean"/>
 <!-- Footer -->
 <footer class="main-footer">
-    <img class="main-footer-img" height="100" src="/modules/styles/images/pages/Amanita.png" />
+    <img class="main-footer-img" height="100" src="<?=image_url('pages/Amanita.png');?>" />
     <div class="main-header-line"></div>
     <div class="main-header-green" style="height: 75px;">
         <div class="main-footer-content">
@@ -83,7 +83,7 @@
                     <?=get_string('pages', 'help')?>
                 </strong>
                 <br />
-                <a href="<?=base_url('special/contact');?>"><?=get_string('pages', 'feedback')?></a>
+                <a href="<?=base_url('special/contacts');?>"><?=get_string('pages', 'feedback')?></a>
             </p>
             <p>
                 <strong><?=get_string('pages', 'navigation')?></strong>

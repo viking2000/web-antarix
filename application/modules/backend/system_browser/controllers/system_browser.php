@@ -8,8 +8,17 @@ class System_browser extends Controller
     {
     }
 
-    public function log()
+    public function log( $opt = array() )
     {
+        if ( empty($opt) )
+        {
+            $model = $this->model('error_model');
+        }
+        else
+        {
+            $model = $this->model('cron_model');
+        }
+
         Builder::add_css('pages/backend-error_list');
 
         $current_interval = 1;
@@ -20,10 +29,10 @@ class System_browser extends Controller
 
         $contents['interval']     = array(
             'link'     => base_url(Buffer::get(URL_CONTROLLER).'/'.Buffer::get(URL_METHOD), TRUE),
-            'interval' => $this->model('error_model')->get_interval(),
+            'interval' => $model->get_interval(),
             'selected' => $current_interval
         );
-        $contents['info_list'] = $this->model('error_model')->get_list($current_interval);
+        $contents['info_list'] = $model->get_list($current_interval);
 
         $page = array();
         $page['content'] = $this->view('system_browser', $contents, TRUE);

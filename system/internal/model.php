@@ -166,8 +166,10 @@ class File_model {
 
     private $__reference      = '';
     private $__limit          = 0;
+    private $__file_list      = array();
 
     public $query         = array();
+
 
     public function __construct($options)
     {
@@ -222,6 +224,14 @@ class File_model {
         return $this->__scan_hierarchy($query['select'], $query['where']);
     }
 
+    public function rows()
+    {
+        $this->__file_list = array();
+        $query = $this->__build_a_query();
+        $this->__scan_rows_hierarchy($query['select'], $query['where']);
+        return $this->__file_list;
+    }
+
     private function __scan_hierarchy($dir, $ext)
     {
         $result = array();
@@ -249,6 +259,29 @@ class File_model {
         return $result;
     }
 
+    private function __scan_rows_hierarchy($dir, $ext)
+    {
+        $last_symbol = substr($dir, -1);
+        if ($last_symbol != '/')
+        {
+            $dir .= '/';
+        }
+
+        $folders = scandir($dir);
+        $files   = glob($dir.$ext, GLOB_BRACE);
+        foreach ($files as $path)
+        {
+            $this->__file_list[] = $path;
+        }
+
+        foreach ($folders as $name)
+        {
+            if (is_dir($dir.$name) AND ! in_array($name, array('.', '..') ) )
+            {
+                $this->__scan_rows_hierarchy($dir.$name, $ext);
+            }
+        }
+    }
 
     public function set_module($name)
     {

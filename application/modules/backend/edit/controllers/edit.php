@@ -14,7 +14,37 @@ class Edit extends Controller
     {
         $structure_model = $this->model('structure_model');
 
-        echo var_export(json_encode($structure_model->get_file_hierarchy()));
+        $page = array();
+        $page['content'] = $this->view('structure_list', array('list' => $structure_model->get_lang_files()), TRUE);
+        $this->view('backend/backend', $page);
+    }
+
+    public function structure_edit($opt = array() )
+    {
+        if ( empty($opt) )
+        {
+            throw new Exception_wx(4040004, '$opt');
+        }
+
+        $file = implode('/', $opt);
+        $content['header'] = $file;
+
+        //для загрузки словаря
+        get_string(basename($file), 'none');
+        include APPPATH.'language/'.$file.'.php';
+
+        if ( empty($words) )
+        {
+            throw new Exception_wx(4040007, '$words');
+        }
+
+        $content['file_content'] = Format::converter($words, 'json');
+        $content['file_content'] = str_replace('",', "\",\n", $content['file_content'] );
+
+        unset($words);
+        $page = array();
+        $page['content'] = $this->view('structure_edit', $content, TRUE);
+        $this->view('backend/backend', $page);
     }
 
     public function article($opt = array() )
@@ -29,16 +59,33 @@ class Edit extends Controller
             $current_interval = intval( next($opt) );
         }
 
+        if ($type == '_none-type')
+        {
+            $contents['info_list'] = $this->model('none_type_articles_model');
+        }
+        else
+        {
+            $contents['info_list'] = $articles_model->get_list($type, NULL, $current_interval);
+        }
 
-        $contents['info_list'] = $articles_model->get_list($type, NULL, $current_interval);
-        $contents['interval']     = array(
+        $contents['interval']  = array(
             'link'     => base_url(Buffer::get(URL_CONTROLLER).'/'.Buffer::get(URL_METHOD), TRUE),
             'interval' => $articles_model->get_interval($type),
             'selected' =>  $current_interval
         );
 
         $page = array();
-        $page['content'] = $this->view('article_list', $contents, TRUE);
+
+        if ($type == '_none-type')
+        {
+            $page['content'] = $this->view('none_type_article_list', $contents, TRUE);
+        }
+        else
+        {
+            $page['content'] = $this->view('article_list', $contents, TRUE);
+        }
+
+
         $this->view('backend/backend', $page);
     }
 
@@ -83,23 +130,24 @@ class Edit extends Controller
             }
         }
 
-        $lang_path = APPPATH."language/{$contents['lang']}/dictionaries/url_naming.php";
-        include_once $lang_path;
-
-        if ( isset($words) )
-        {
-            $contents['header'] = $words[$contents['id']];
-        }
-
         $page = array();
         $page['content'] = $this->view('article_edit', $contents, TRUE);
         $this->view('backend/backend', $page);
     }
 
-    public function resources()
+    public function images_edit($opt = array() )
     {
+        $images_model = $this->model('images_model');
+        $image_list   = $images_model->get_images();
+
+        $contents = array();
+        foreach ($image_list as $path)
+        {
+            $contents['image_list'][] = str_replace('./', config('settings', 'base_url'), $path);
+        }
+
         $page = array();
-        $page['content'] = $this->view('article_edit', NULL, TRUE);
+        $page['content'] = $this->view('image_edit', $contents, TRUE);
         $this->view('backend/backend', $page);
     }
 }

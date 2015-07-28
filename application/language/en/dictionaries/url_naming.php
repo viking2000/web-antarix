@@ -22,5 +22,4 @@
   'cocos2d-sprite-and-listeners' => 'Cocos2D-x Sprite и Listener',
   'cocos2d-text-widgets' => 'Cocos2D-x Text Widgets',
   'cocos2d-scenes' => 'Cocos2D-x Сцены',
-  12345 => '123',
 );

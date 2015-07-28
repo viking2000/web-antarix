@@ -1,40 +1,50 @@
 .calculation-interval {
     height: 36px;
-    width: 100%;
+    width: 99%;
     margin: 10px;
+
 }
 
 .cl-button,
 .cl-selected {
-    border-radius: 5px;
+    font-family: 'Marmelad', sans-serif;
+    color:#567775;
+    font-size: 1em;
+    border-radius: 20px;
     text-decoration:none;
     display:inline-block;
     margin-right: 2px;
-    padding:0 11px;
+    padding:0 10px;
+    height: 30px;
+    width: 10px;
     line-height:30px;
     font-weight:bold;
-    background:url('../images/widgets/calculation/mini_button.png') no-repeat 0 0;
+    border: 2px solid #aaaaaa;
+    background:#dff1ff;
+    text-align: center;
 }
 
 .cl-button {
-    font-size:14px;
     margin-right: 2px;
-    color:#2E2E2E;
-
 }
+
 .cl-button:hover {
-    color: #6b971e;
-    font-size:16px;
-    background-position: 0 -30px;
+    border: 2px solid #cbcbcb;
+    background: #e7f5ff;
+    color: #76a19f;
 }
 
 .cl-button:active {
-    color:#cccccc;
-    font-size:12px;
+    font-size: .8em;
 }
 
 .cl-selected {
-    color:#cccccc;
-    font-size:12px;
-    background-position: 0 -60px;
+
+    color: #476462;
+    border: 3px solid #8d8d8d;
+    font-size: 1.1em;
+    border-radius: 25px;
+    line-height:35px;
+    height: 35px;
+    width: 15px;
 }

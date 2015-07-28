@@ -21,7 +21,7 @@ class apply_data  extends Command {
     {
         //Сохраняем статью в базу данных
         $articles_model = $this->model('articles_model');
-        $result = $articles_model->insert($this->id, $this->lang, $this->type, $this->structure, $this->creation);
+        $result = $articles_model->insert($this->id, $this->lang, $this->header, $this->type, $this->structure, $this->creation);
 
         //Сохраняем статью в файл
         $path = APPPATH."views/articles/{$this->lang}/{$this->type}/{$this->id}.php";

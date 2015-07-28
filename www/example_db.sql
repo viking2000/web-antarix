@@ -91,6 +91,21 @@ CREATE TABLE IF NOT EXISTS `users` (
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=2 ;
 
 --
+-- Структура таблицы `log_cron`
+--
+
+CREATE TABLE IF NOT EXISTS `log_cron` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(20) COLLATE utf8_bin NOT NULL,
+  `start` datetime NOT NULL,
+  `end` datetime NOT NULL,
+  `report` text COLLATE utf8_bin NOT NULL,
+  `result` varchar(10) COLLATE utf8_bin NOT NULL,
+  `creation` datetime NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_bin AUTO_INCREMENT=1 ;
+
+--
 -- Дамп данных таблицы `users`
 --
 

@@ -1,6 +1,6 @@
 <?php
-$structure = array (
+$words = array (
     'Главная' => base_url(),
-    'Уроки' => base_url('articles'),
+    'Блог' => base_url('articles/browse'),
     'О нас' => base_url('home/about'),
 );

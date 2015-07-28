@@ -10,10 +10,11 @@
 class Articles_model extends Db_model {
 
     protected $_count   = 20;
-    const Q_SET_DATA    = 'INSERT INTO `%table` (`id`, `lang`,`type`, `structure`, `creation`)
-                           VALUES("%id", "%lang", "%type", "%structure", "%creation")
+    const Q_SET_DATA    = 'INSERT INTO `%table` (`id`, `lang`, `header`, `type`, `structure`, `creation`)
+                           VALUES("%id", "%lang", "%header", "%type", "%structure", "%creation")
                            ON DUPLICATE KEY UPDATE
                               `type`      = VALUES(`type`),
+                              `header`    = VALUES(`header`),
                               `structure` = VALUES(`structure`),
                               `creation`  = VALUES(`creation`)';
 
@@ -65,7 +66,7 @@ class Articles_model extends Db_model {
 	
 	public function get_article($id, $lang)
     {
-        $this->query['select'] = '`id`, `lang`, `type`, `structure`, `creation`';
+        $this->query['select'] = '`id`, `lang`, `header`, `type`, `structure`, `creation`';
         $this->query['where'] = "`id` = '{$id}' AND `lang` = '{$lang}'";
         $this->query['limit']  = '1';
 
@@ -80,16 +81,17 @@ class Articles_model extends Db_model {
 
     public function get_empty()
     {
-        return array('id' => '', 'lang' => '', 'type' => '', 'structure' => '', 'creation' => '');
+        return array('id' => '', 'lang' => '','header' => '', 'type' => '', 'structure' => '', 'creation' => '');
     }
 
-    public function insert($id, $lang, $type, $structure, $creation)
+    public function insert($id, $lang, $header, $type, $structure, $creation)
     {
         return db::simple_query(
             self::Q_SET_DATA,
             array('%table'=> $this->_table,
                 '%id' => $id,
                 '%lang' => $lang,
+                '%header' => $header,
                 '%type' => $type,
                 '%structure' => $structure,
                 '%creation' => $creation),

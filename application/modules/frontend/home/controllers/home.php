@@ -26,15 +26,12 @@ class Home extends Controller
         Builder::add_css('pages/home-main');
 
         $nav = array();
-        $nav[get_string('url_naming', 'articles')] = '';
-        //$nav[get_string('url_naming', $type )] = 'articles/browse/' . $type;
-
-
+        $nav[get_string('url_naming', 'home')] = '';
 
         //------------------Total page------------
         $page               = array();
-        $page['nav']      =& $nav;
-
+        $page['nav']        =& $nav;
+        $page['content']    = $this->view(get_article_path('home'), array(),  TRUE);
 
         $this->view('frontend/frontend', $page);
     }
@@ -44,9 +41,15 @@ class Home extends Controller
         Builder::set_title( get_string('pages', 'about_title') );
 		Builder::add_meta('robots', 'none', TRUE);
 
+        $nav = array();
+        $nav[get_string('url_naming', 'home')] = '';
+        $nav[get_string('url_naming', 'about')] = 'home/about';
+
+        //------------------Total page------------
         $path = get_article_path('about');
         $page               = array();
 
+        $page['nav'] =& $nav;
         $page['content']   = $this->view($path, array(), TRUE);
 
         $this->view('frontend/frontend', $page);

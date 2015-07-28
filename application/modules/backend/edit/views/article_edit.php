@@ -27,7 +27,7 @@
         <tr>
             <td>structure</td>
             <td>
-                <textarea cols="80" name="structure" rows="10" id="structure"><?= isset($structure) ? $structure : '';?></textarea>
+                <textarea cols="80" name="structure" rows="10" id="structure"><?= isset($words) ? $words : '';?></textarea>
             </td>
         </tr>
         <tr>

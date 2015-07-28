@@ -1,5 +1,5 @@
 <?php
-$structure = array (
+$words = array (
 
         array (
             'title' => 'Курс 2D художника',

@@ -15,7 +15,7 @@ class set_contact  extends Command {
     public $email       = TRUE;
     public $captcha     = TRUE;
     public $message     = TRUE;
-    public $phone;
+    public $header;
 
     public function execute()
     {
@@ -26,9 +26,13 @@ class set_contact  extends Command {
             throw new Command_exception('captcha error', get_string('errors', 'captcha_error'));
         }
 
-        $subject = '(Русская зона) Пользователь - '.$this->name;
+        if (empty($this->header) )
+        {
+            $this->header = 'none';
+        }
+
+        $subject = $this->name . ' : ' .  $this->header;
         $message = 'email: '.$this->email."\r\n";
-        $message .= 'phone: '.$this->phone."\r\n";
         $message .= 'message: '.$this->message;
         mail(self::EMAIL, $subject, $message, "Content-type:text/plain; charset = utf-8\r\nFrom:{$this->email}");
     }

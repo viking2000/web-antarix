@@ -41,19 +41,22 @@ class Files extends Controller
     public function add_image($opt = array() )
     {
         $user   = Loader::get_user();
-        $folder = reset($opt);
-        $id     = next($opt);
+
+        if ( empty($opt) )
+        {
+            $path  = './modules/images';
+        }
+        else
+        {
+            $path  = './modules/images/' . implode('/', $opt);
+        }
 
         if ( ! $user->is_admin()
-            OR empty($folder)
-            OR empty($id)
             OR empty($_FILES['uploadFile'])
             OR empty($_FILES['uploadFile']['name']))
         {
             return;
         }
-
-        $path  = "./modules/images/{$folder}/{$id}";
 
         if ( ! file_exists($path) )
         {
