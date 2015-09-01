@@ -65,6 +65,7 @@ class Create_sitemap  extends Command {
             return;
         }
 
+        $model = $this->model('backend/sitemap_model');
         $sitemap    = simplexml_load_file(FCPATH.'sitemap.xml');
         $map_model  = array();
         $home_point =& $map_model;
@@ -83,9 +84,27 @@ class Create_sitemap  extends Command {
             $last_key     = NULL;
             $count        = count($segment_item);
             $i            = 0;
+
             foreach ($segment_item as $item)
             {
                 ++$i;
+
+                if ($i == $count)
+                {
+                    $article_data = $model->get($item);
+                    if ( ! empty($article_data) )
+                    {
+                        $key = $article_data['type'];
+                        if ( ! isset($map_model[$key]) )
+                        {
+                            $map_model[$key] = array();
+                        }
+
+                        $map_model  =& $map_model[$key];
+                        $item       = $article_data['header'];
+                    }
+                }
+
                 if ( ! isset($map_model[$item]) )
                 {
                     $map_model[$item] = array();
@@ -93,11 +112,6 @@ class Create_sitemap  extends Command {
 
                 if ($i < $count)
                 {
-                    if ( ! is_array($map_model[$item]) )
-                    {
-                        $map_model[$item] = array();
-                    }
-
                     $map_model =& $map_model[$item];
                 }
 
@@ -133,7 +147,13 @@ class Create_sitemap  extends Command {
             }
             else
             {
-                $html .= '<li><a href="'.base_url($value)."\">{$name}</a></li>";
+                $first_symbol = $value{0};
+                if ($first_symbol == '/')
+                {
+                    $value = substr($value, 1);
+                }
+
+                $html .= '<li><a href="'.config('settings', 'base_url').$value."\">{$name}</a></li>";
             }
         }
 

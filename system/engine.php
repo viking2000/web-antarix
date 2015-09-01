@@ -52,25 +52,32 @@ try
             $i = 0;
             $route = config('route');
 
+			//Определяем язык, если он включён
             if ( config('settings', 'multilingualism') )
             {
                 $lang = $path[$i];
-                if ( empty($path[$i]) )
+                if ( empty($path[$i]) OR ! in_array($lang, config('settings', 'supported_lang') ) )
                 {
-                    Buffer::set( URL_LANG, config('settings', 'default_lang') );
+					Buffer::set( URL_LANG, config('settings', 'default_lang') );
+					
+					if ( ! empty($path[$i]) )
+					{
+						header('Location: '. base_url( implode('/', $path) ) );
+						exit();
+					}
                 }
                 else
                 {
                     Buffer::set(URL_LANG, $lang);
-                }
-
-                ++$i;
+					++$i;
+                }  
             }
 
             //Определяем точку доступа
+			$ap_url = ( empty($path[$i]) ) ? '' : $path[$i];
             foreach ($route as $key => $value)
             {
-                if ($value == $path[$i])
+                if ($value == $ap_url)
                 {
                     $ap = $key;
                     break;
@@ -102,6 +109,7 @@ try
                 ++$i;
             }
 
+			$controller = (string)str_replace('-', '_', $controller);
             Buffer::set(URL_CONTROLLER, $controller);
             if ( ! empty($path[$i]) )
             {

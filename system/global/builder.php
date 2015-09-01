@@ -13,6 +13,8 @@ class Builder {
     static protected $_attach_css            = array();
     static protected $_js_constants          = array();
     static protected $_meta_data             = array();
+    static protected $_plugin_list           = array();
+    static protected $_plugin_header         = '';
     static protected $_header_js             = '';
     static protected $_header_css            = '';
     static protected $_noscript              = '';
@@ -121,21 +123,19 @@ class Builder {
         {
             $control_value = $name.'/'.$item;
             if ( ! file_exists($plugin_path . $item)
-                || in_array($control_value, self::$_attach_css)
-                || in_array($control_value, self::$_attach_js))
+                || in_array($control_value, self::$_plugin_list))
             {
                 continue;
             }
 
+            self::$_plugin_list[] = $control_value;
             if (strrpos($item, '.css') === TRUE)
             {
-                self::$_attach_css[] = $control_value;
-                self::$_header_css .= attach_css($plugin_path . $item);
+                self::$_plugin_header .= attach_css($plugin_path . $item);
             }
             else
             {
-                self::$_attach_js[] = $control_value;
-                self::$_header_js .= attach_js($plugin_path . $item);
+                self::$_plugin_header .= attach_js($plugin_path . $item);
             }
         }
     }
@@ -228,6 +228,7 @@ class Builder {
         $header_css      =& self::$_header_css;
         $header_js       =& self::$_header_js;
         $footer_js       =& self::$_footer_js;
+        $plugin_header   =& self::$_plugin_header;
         $noscript        =& self::$_noscript;
         $js_constants    = implode(' ', self::$_js_constants);
         $doctype         = ($is_mobile) ? config('web', 'doctype_mobile') : config('web', 'doctype_pc');
@@ -237,10 +238,13 @@ class Builder {
         $meta            = '';
         $title           = self::$_title;
 
+        //если включено кеширование стилей, то собираем стили страницы в один файл
         if (config(URL_AP, 'cache', 'page_header'))
         {
             $key          = Cache::generate_key();
             $compiled_web = Cache::get_link($key, 'styles');
+
+            //собираем CCS стили
             if ( empty($compiled_web) )
             {
                 $cache_content = '';
@@ -255,6 +259,8 @@ class Builder {
 
             $header_css   = attach_css($compiled_web);
             $compiled_web = Cache::get_link($key, 'scripts');
+
+            //собираем JS файлы
             if (empty($compiled_web) )
             {
                 $cache_content = '';
@@ -290,6 +296,7 @@ class Builder {
 				<link rel="shortcut icon" href="{$favicon_path}" type="image/x-icon"> 
                 {$header_css}
                 {$header_js}
+                {$plugin_header}
                 <noscript>
                     {$noscript}
                 </noscript>

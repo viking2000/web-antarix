@@ -6,26 +6,24 @@
 
 <table>
 <?php
-    if ( ! isset($info_list) )
-    {
-        $info_list = array();
-    }
-
-    echo '<tr>';
-    foreach (reset($info_list) as $key => $value)
-    {
-        echo '<th>'.$key.'</th>';
-    }
-    echo '</tr>';
-
-    foreach ($info_list as $line)
+    if ( ! empty($info_list) )
     {
         echo '<tr>';
-        foreach ($line as $item)
+        foreach (reset($info_list) as $key => $value)
         {
-            echo '<td>'.$item.'</td>';
+            echo '<th>'.$key.'</th>';
         }
         echo '</tr>';
+
+        foreach ($info_list as $line)
+        {
+            echo '<tr>';
+            foreach ($line as $item)
+            {
+                echo '<td>'.$item.'</td>';
+            }
+            echo '</tr>';
+        }
     }
 ?>
 </table>

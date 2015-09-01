@@ -9,7 +9,7 @@
 
 class set_contact  extends Command {
 
-    const EMAIL         = 'support@project-antary.com';
+    const EMAIL         = 'ax_viking@mail.ru';
 
     public $name        = TRUE;
     public $email       = TRUE;

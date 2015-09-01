@@ -8,10 +8,6 @@ class Home extends Controller
     {
         Builder::add_meta('description', '');
         Builder::add_meta('keywords', '');
-        Builder::add_meta('author', 'Project-Antary');
-        Builder::add_css('pages/home');
-        $this->_menu_right['top'] = TRUE;
-        $this->_menu_right['down'] = TRUE;
     }
 
     public function index($opt = array() )
@@ -21,9 +17,9 @@ class Home extends Controller
 
     public function main($opt = array() )
     {
-        Builder::add_meta('robots', 'none', TRUE);
+		Builder::add_css('pages/frontend-home');
+        Builder::add_meta('robots', 'noindex', TRUE);
         Builder::set_title(get_string('pages', 'main_title'));
-        Builder::add_css('pages/home-main');
 
         $nav = array();
         $nav[get_string('url_naming', 'home')] = '';

@@ -116,6 +116,12 @@ class Edit extends Controller
         {
             $contents['image_list'] = array();
             $dir = "./modules/images/articles/{$contents['id']}/";
+
+            if ( ! file_exists($dir) )
+            {
+                mkdir($dir);
+            }
+
             $include_images = scandir($dir);
 
             foreach ($include_images as $name)

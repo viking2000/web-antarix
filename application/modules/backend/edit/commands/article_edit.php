@@ -80,7 +80,7 @@ class apply_data  extends Command {
         $site_map->asXML('./sitemap.xml');
 
         //Сохраняем название ID статьи в языковый файл
-        $lang_path = APPPATH."language/{$this->lang}/dictionaries/url_naming.php";
+        /*$lang_path = APPPATH."language/{$this->lang}/dictionaries/url_naming.php";
         include_once $lang_path;
 
         if ( isset($words) )
@@ -94,12 +94,11 @@ class apply_data  extends Command {
         else
         {
             $result = FALSE;
-        }
+        }*/
 
         self::set_result($result);
     }
 }
-
 
 class delete_image  extends Command {
 

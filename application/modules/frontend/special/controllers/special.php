@@ -35,7 +35,7 @@ class Special extends Controller
         $nav[get_string('url_naming', 'contacts')] = 'special/contact';
 
         //------------------Total page------------
-        $page               = get_structure('frontend/home-contact');
+        $page               = array();
         $page['nav']        =& $nav;
         $page['content']    = $contents;
         $this->view('frontend/frontend', $page);

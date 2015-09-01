@@ -7,16 +7,22 @@
  * To change this template use File | Settings | File Templates.
  */
 
-class Img_model extends File_model {
+class Sitemap_model extends Db_model {
 
     public function __construct()
     {
         $options = array(
-            'reference' => './modules/'.Buffer::get(URL_AP).'/images/',
+            'reference' => 'data_articles'
         );
 
         parent::__construct($options);
     }
 
+    public function get($key)
+    {
+        $this->query['select'] = '`type`, `header`';
+        $this->query['where'] = "`id` = '{$key}'";
 
+        return $this->row();
+    }
 }

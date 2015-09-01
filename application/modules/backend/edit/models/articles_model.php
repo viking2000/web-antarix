@@ -67,7 +67,7 @@ class Articles_model extends Db_model {
 	public function get_article($id, $lang)
     {
         $this->query['select'] = '`id`, `lang`, `header`, `type`, `structure`, `creation`';
-        $this->query['where'] = "`id` = '{$id}' AND `lang` = '{$lang}'";
+        $this->query['where']  = "`id` = '{$id}' AND `lang` = '{$lang}'";
         $this->query['limit']  = '1';
 
         return $this->row();

@@ -1,15 +1,25 @@
 a {
     font-weight: bolder;
-    color: #518029;
+    color: #8d8d8d;
 }
 
 a:hover {
     text-decoration: none;
 }
 
-h1, h2, h3, h4, h5, h6, {
+h1, h2, h3, h4, h5, h6{
     font-family: 'Marmelad', sans-serif;
     color: #464646;
+}
+
+h3 {
+    display: block;
+    font-size: 1em;
+    -webkit-margin-before: 0.83em;
+    -webkit-margin-after: 0.83em;
+    -webkit-margin-start: 0px;
+    -webkit-margin-end: 0px;
+    font-weight: bold;
 }
 
 h2 {
@@ -34,4 +44,114 @@ h1 {
 
 p {
     margin: 1em 0;
+}
+
+.left-img {
+    float: left;
+    width: 70%;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+
+.right-img {
+    float: right;
+    width: 70%;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+.center-img {
+    display: block;
+    width: 70%;
+    margin:5px auto;
+}
+
+.left-img-40 {
+    float: left;
+    width: 40%;
+    margin-right: 20px;
+    margin-bottom: 5px;
+}
+
+.right-img-40 {
+    float: right;
+    width: 40%;
+    margin-left: 20px;
+    margin-bottom: 5px;
+}
+
+.center-img-40 {
+    display: block;
+    width: 40%;
+    margin: 5px auto;
+}
+
+.warning {
+    padding: .5em;
+    margin: 2em 0;
+    background-color: #eef5fa;
+    border: 5px #e1e8ed solid;
+    border-radius: 1em;
+}
+
+table {
+    margin-top: 2em;
+    margin-bottom: 2em;
+
+    font-size: .9em;
+    color: #3e4761;
+}
+
+td {
+    background: #f8f8f8;
+    border: 1px solid #eaeaea;
+    padding: .3em 1em;
+}
+
+th {
+    background: #e5e5e5;
+    border: 1px solid #d1d1d1;
+    padding: .3em 1em;
+    font-weight: bold;
+}
+
+.right_text {
+    float: right;
+    width: 50%;
+}
+
+.left_text {
+    float: left;
+    width: 50%;
+}
+
+.article-list {
+    margin-bottom: 2em;
+}
+
+.article-list li {
+    font-family: Arial, sans-serif;
+    padding: .2em .2em .2em .4em;
+    color: #8a98a6; /*#516eae;*/
+    list-style-type: disc;
+    margin-left: 4em;
+}
+
+.console-style {
+    font-family: "Courier New",Arial, sans-serif;
+    font-size: .9em;
+    font-weight: bolder;
+    padding: .1em;
+    background-color: #e6e6e6;
+    border: 1px rgb(182, 182, 182) solid;
+    color: #5a5a5a;
+    border-radius: .4em;
+}
+
+.warning {
+    padding: .5em;
+    margin: 2em 0;
+    background-color: #eef5fa;
+    border: 5px #e1e8ed solid;
+    border-radius: 1em;
 }

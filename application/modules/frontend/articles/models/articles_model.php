@@ -23,7 +23,7 @@ class Articles_model extends Db_model {
 
     public function get($id)
     {
-        $this->query['select'] = '`structure`, `type`, `header`, `creation`';
+        $this->query['select'] = '`structure`, `type`, `header`, DATE(`creation`) as `creation`';
         $this->query['where']  = "id = '{$id}'";
 
         $result  = $this->row(TRUE);
@@ -61,7 +61,7 @@ class Articles_model extends Db_model {
         {
             $structure['header'] = get_string('url_naming', $item);
             $structure['type'] = $item;
-            $structure['image'] = image_url('types/'.$item.'jpg');
+            $structure['image'] = image_url('types/'.$item.'.jpg');
             $result[] = $structure;
         }
 
@@ -75,11 +75,15 @@ class Articles_model extends Db_model {
 
     public function get_articles_list($interval, $type = NULL)
     {
-        $this->query['order']  = '`creation` DESC';
         if ( ! empty($type) AND ! in_array($type, $this->_special_type) )
         {
             $this->query['where'] = "`type` = '{$type}'";
+			$this->query['order']  = '`creation`';
         }
+		else
+		{
+			$this->query['order']  = '`creation` DESC';
+		}
 
         $lang = Buffer::get(URL_LANG);
         if ( ! empty($lang) )
@@ -103,9 +107,9 @@ class Articles_model extends Db_model {
         {
             $structure = json_decode($item['structure'], TRUE);
             $structure['header'] = $item['header'];
-            $structure['image'] = image_url('types/'.$item.'jpg');
+            $structure['image'] = image_url('types/'.$item['type'].'.jpg');
             $structure['link']   = base_url("articles/read/{$item['id']}");
-            $structure['footer'] = $item['creation'].' : '.get_string('url_naming', $item['type']);
+            $structure['footer'] = get_string('url_naming', $item['type']);
             $result[] = $structure;
         }
 
@@ -114,7 +118,7 @@ class Articles_model extends Db_model {
 
     public function get_articles_by_type($type)
     {
-        $this->query['order']  = '`creation` DESC';
+        $this->query['order']  = '`creation`';
         $this->query['where'] = "`type` = '{$type}'";
 
         $lang = Buffer::get(URL_LANG);

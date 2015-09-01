@@ -1,4 +1,4 @@
-<article>
+<article id="contents-of-the-article">
     <?php
         if ( ! empty($previous) )
         {
@@ -12,11 +12,11 @@
         echo '<br class="clear" />';
     ?>
     <header>
+        <div class="last-creation"><?=get_string('pages', 'last-creation'), $creation;?></div>
+        <br class="clear" />
         <h1>
             <?=$header;?>
         </h1>
-        <div class="last-creation"><?=get_string('pages', 'last-creation'), $creation;?></div>
-
     </header>
     <?=$this->view(get_article_path($id, $type), array(), TRUE );?>
     <?php

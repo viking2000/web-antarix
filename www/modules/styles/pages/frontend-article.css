@@ -1,3 +1,4 @@
+
 .article-menu-wrapper {
     padding-left: 20px;
     padding-bottom: 20px;
@@ -5,7 +6,7 @@
     height: 430px;
     border: 5px solid #aaaaaa;
     border-radius: 20px;
-    background: #D7FAB6; /* Цвет фона */
+    background: #e2e2e2; /* Цвет фона */
 }
 
 .article-menu-wrapper header {
@@ -14,7 +15,7 @@
     padding: 5px 0;
     margin-bottom: 5px;
     border-bottom: 2px solid #aaaaaa;
-    background-image: linear-gradient(to right, #D7FAB6 0%,#ffffff 50%,#D7FAB6 100%);
+    background-image: linear-gradient(to right, #c3c3c3 0%,#ffffff 50%, #c2c2c2 100%);
 }
 .left-menu-item {
     color: #274901;
@@ -28,14 +29,21 @@
 }
 
 .left-menu-item:hover {
-    color: #6db101;
+    color: #858585;
     margin-left: 10px;
 }
 
 .left-menu-item:active {
-    color: #6db101;
+    color: #858585;
     padding-left: 10px;
     margin-left: 10px;
+}
+
+.last-creation {
+    margin-top: 10px;
+    color: #858585;
+    float: right;
+    font-style:  oblique;
 }
 
 #current-left-menu-item {
@@ -68,73 +76,3 @@
      height:1px;
      margin:5px -6px 2px -6px;
  }
-
-.left-img {
-    float: left;
-    width: 70%;
-    margin-right: 20px;
-    margin-bottom: 5px;
-}
-
-.right-img {
-    float: right;
-    width: 70%;
-    margin-left: 20px;
-    margin-bottom: 5px;
-}
-
-.center-img {
-    display: block;
-    width: 70%;
-    margin: 5px auto;
-}
-
-.left-img-40 {
-    float: left;
-    width: 40%;
-    margin-right: 20px;
-    margin-bottom: 5px;
-}
-
-.right-img-40 {
-    float: right;
-    width: 40%;
-    margin-left: 20px;
-    margin-bottom: 5px;
-}
-
-.center-img-40 {
-    display: block;
-    width: 40%;
-    margin: 5px auto;
-}
-
-.warning {
-    padding: .5em;
-    margin: 2em 0;
-    background-color: #eef5fa;
-    border: 5px #e1e8ed solid;
-    border-radius: 1em;
-}
-
-table {
-    margin-top: 2em;
-    margin-bottom: 2em;
-
-    font-size: .9em;
-    color: #3e4761;
-}
-
-td {
-    background: #f8f8f8;
-    border: 1px solid #eaeaea;
-    padding: .3em 1em;
-}
-
-th {
-    background: #e5e5e5;
-    border: 1px solid #d1d1d1;
-    padding: .3em 1em;
-    font-weight: bold;
-}
-

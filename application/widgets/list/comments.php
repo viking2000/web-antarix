@@ -42,18 +42,19 @@ function list__comments($options = array() )
         $body = list__comments_build($tree, 120);
     }
 
-    $captcha = base_url('/technical/tests/captcha');
-    $title_comment = get_string('widgets', 'comment_title');
-    $email = get_string('widgets', 'your_email');
-    $name = get_string('widgets', 'your_name');
-    $message = get_string('widgets', 'your_message');
-    $captcha_info = get_string('widgets', 'captcha_info');
-    $verification_code = get_string('widgets', 'verification_code');
-    $clear = get_string('widgets', 'clear');
-    $comment = get_string('widgets', 'comment');
-    $cancel = get_string('widgets', 'cancel');
-    $obligatory_field = get_string('widgets', 'obligatory_field');
-    $is_not_filled  = get_string('widgets', 'is_not_filled');
+    $captcha            = base_url('/technical/tests/captcha');
+    $title_comment      = get_string('widgets', 'comment_title');
+    $email              = get_string('widgets', 'your_email');
+    $name               = get_string('widgets', 'your_name');
+    $message            = get_string('widgets', 'your_message');
+    $captcha_info       = get_string('widgets', 'captcha_info');
+    $verification_code  = get_string('widgets', 'verification_code');
+    $clear              = get_string('widgets', 'clear');
+    $comment            = get_string('widgets', 'comment');
+    $cancel             = get_string('widgets', 'cancel');
+    $obligatory_field   = get_string('widgets', 'obligatory_field');
+    $is_not_filled      = get_string('widgets', 'is_not_filled');
+
     return <<<EOT
     <div class="list-comments">
     <br />

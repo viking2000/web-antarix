@@ -65,8 +65,6 @@ class Articles extends Controller
     {
         Builder::add_plugin('jQuery-slimScroll');
         Builder::add_js('system/wx');
-        Builder::add_js('system/openapi');
-        Builder::add_js('system/rainbow-custom.min');
         Builder::add_css('pages/frontend-article');
         Builder::add_css(array('pages/home-about', 'system/github'));
 
@@ -121,23 +119,7 @@ class Articles extends Controller
             Builder::add_meta('keywords', $article_meta['keywords']);
         }
 
-        $nav = array();
-        $nav[get_string('url_naming', 'articles')] = 'articles/browse';
-        $nav[get_string('url_naming', $article_meta['type'])] = 'articles/browse/' . $article_meta['type'];
-        $nav[$article_meta['header']] = 'articles/read/' . $article_id;
-
         $page                       = array();
-        $page['nav']                = $nav;
-        $page['left']               = $this->view('article_nav', $left, TRUE);
-        $page['additional_content'] = $this->view('vk_widgets/vk_comments', NULL, TRUE);
-
-        switch ($article_meta['type'])
-        {
-            case '2d-drawing':
-                $page['left'] .= $this->view('vk_widgets/vk_2d_drawing_group', NULL, TRUE);
-                break;
-        }
-
         $page['content']    = $this->view('article_read', $content, TRUE);
         $this->view('frontend/frontend', $page);
     }

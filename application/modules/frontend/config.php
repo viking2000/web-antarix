@@ -14,9 +14,9 @@ $config['access']['zone'] = Z_PUBLIC; //Метка зоны доступа
 //$config['controller']['_system']['zone'] = Z_CLOSED; //Описание доступа к конкретным контроллерам
 
 $config['cache']['enabled']         = FALSE;//Включено или отключено кеширование страниц
-$config['cache']['pages_lifetime']       = 28800;//Время жизни кеша
+$config['cache']['pages_lifetime']       = 172800;//Время жизни кеша 172800 сек. = 2 дня
 $config['cache']['page_header'] = FALSE; // компилировать ли стили страницы
-$config['cache']['web_lifetime'] = 28800;//Время жизни сборки стилей
+$config['cache']['web_lifetime'] = 172800;//Время жизни сборки стилей
 
 $config['web']['scripts']  = array('system/jquery-1.8.3');//список подключаемых js файлов
 $config['web']['styles']  = array('system/import','system/reset', 'pages/frontend', 'pages/frontend-base_style' );//список подключаемх css файлов

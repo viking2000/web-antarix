@@ -27,7 +27,7 @@
         <tr>
             <td>structure</td>
             <td>
-                <textarea cols="80" name="structure" rows="10" id="structure"><?= isset($words) ? $words : '';?></textarea>
+                <textarea cols="80" name="structure" rows="10" id="structure"><?= isset($structure) ? $structure : '';?></textarea>
             </td>
         </tr>
         <tr>
@@ -39,7 +39,7 @@
         <tr>
             <td>creation</td>
             <td>
-                <input id="creation" type="datetime-local" value="<?= isset($creation) ? $creation.'T00:00' : '0000-00-00T00:00';?>" />
+                <input id="creation" type="datetime-local" value="<?= isset($creation) ? str_replace(' ', 'T', $creation) : '0000-00-00T00:00';?>" />
             </td>
         </tr>
         <tr>
@@ -158,15 +158,16 @@
     $("#data-send").click(function() {
         var editor = CKEDITOR.instances.article;
         //editor.getT
-        var $element = $("#article-form");
-        var data = {};
-        data["id"] = $element.find("input[id='id']").val();
-        data["lang"] = $element.find("input[id='lang']").val();
-        data["type"] = $element.find("input[id='type']").val();
-        data["structure"] = $element.find("textarea[id='structure']").val();
-        data["article"] = editor.getData();//$element.find("textarea[id='article']").val();
-        data["creation"] = $element.find("input[id='creation']").val();
-        data["header"] = $element.find("input[id='header']").val();
+        var $element        = $("#article-form");
+        var data            = {};
+        data["id"]          = $element.find("input[id='id']").val();
+        data["lang"]        = $element.find("input[id='lang']").val();
+        data["type"]        = $element.find("input[id='type']").val();
+        data["structure"]   = $element.find("textarea[id='structure']").val();
+        data["article"]     = editor.getData();//$element.find("textarea[id='article']").val();
+        data["creation"]    = $element.find("input[id='creation']").val();
+        data["header"]      = $element.find("input[id='header']").val();
+
         toServer("article_edit", "apply_data", data, func_list);
         return false;
     } );

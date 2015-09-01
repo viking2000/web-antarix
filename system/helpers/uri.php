@@ -121,7 +121,7 @@ if ( ! function_exists('image_url') )
 
         if ( ! file_exists('./modules/images/'.$path ) )
         {
-            return base_url() . 'modules/images/no-image.jpg';
+            return base_url() . 'modules/images/not-found.gif';
         }
 
         return base_url() . 'modules/images/'.$path;

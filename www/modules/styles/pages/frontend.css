@@ -2,9 +2,10 @@
 article, aside, audio, canvas, command, datalist, details, embed, figcaption, figure, footer, header, hgroup, keygen, meter, nav, output, progress, section, source, video {display:block}
 mark, rp, rt, ruby, summary, time {display:inline}
 
-/* Global properties ======================================================== */
+html {
+    width:100%;
+}
 
-html {width:100%}
 body {
     font-size: 100%;
     font-family: "Ubuntu", Arial, FreeSans, "sans-serif";
@@ -33,13 +34,13 @@ body {
     height: 200px;
     width: 100%;
     position: relative;
-    background: #dff1ff;
+    background: #EFEFEF;
     z-index: 100;
 }
 
 .main-submenu {
     padding-top: 50px;
-    background: #D7FAB6;
+    background: #111;
 }
 
 .dentateLine {
@@ -52,11 +53,11 @@ body {
 }
 
 .main-header-state {
-    border-top: 5px solid #3d4f0c;
+    border-top: 5px solid #000;
     margin-left: 40%;
     width: 50%;
     height: 50%;
-    background: #478500;
+    background: #EFEFEF;
     border-radius: 20px;
     padding-left: 20px;
     font-size: 1.2em;
@@ -69,13 +70,13 @@ body {
     height: 60px;
     width: 100%;
     border-bottom: 5px solid #aaaaaa;
-    background: url('../images/pages/Grass-fills.jpg');
+    background: #B5B4B4;
 }
 
 .main-header-line {
     height: 60px;
     width: 100%;
-    background: url('../images/pages/Grass-line.png') top left repeat-x;
+    background: #6C6B6B;
 }
 
 .main-header-menu {
@@ -89,6 +90,7 @@ body {
     position: absolute;
     top: 10px;
     left: 50px;
+    height: 200px;
 }
 
 .main-header-logo h1 {
@@ -96,16 +98,10 @@ body {
     position: absolute;
     bottom: 10px;
     left: 120px;
-    color: #274901;
+    color: #FFF;
     font-size: 1.5em;
     font-weight: bolder;
     width: 100px;
-}
-
-.main-header-arrow {
-    position: absolute;
-    top: 186px;
-    left: 30%;
 }
 
 .main-header-menu-item{
@@ -119,8 +115,7 @@ body {
     line-height:65px;
     text-align:center;
     text-decoration: none;
-    background: url('../images/pages/bubbles.png') center no-repeat;
-    color: #567775;
+    color: #111;
 }
 
 .main-header-menu-item:hover {
@@ -141,8 +136,7 @@ body {
     display: inline-block;
     text-align:center;
     text-decoration: none;
-    background: url('../images/pages/bubbles.png') center no-repeat;
-    color: #567775;
+    color: #111;
 }
 
 .content {
@@ -150,8 +144,8 @@ body {
     padding: 0 1%;
     margin-left: 2%;
     float: left;
-    border-left: 1px solid #a4ea2c;
-    border-right: 1px solid #a4ea2c;
+    border-left: 1px solid #000;
+    border-right: 1px solid #000;
 }
 
 .sideLeft {
@@ -189,12 +183,12 @@ body {
     padding-top: 40px;
     overflow: hidden;
     min-height: 100px;
-    color: #384139;
+    color: #111;
     line-height:1.5em
 }
 
 .main-footer {
-    color: #274901;
+    color: #111;
     font-size: .9em;
     position: relative;
 }
@@ -206,7 +200,7 @@ body {
 }
 
 .main-footer a {
-    color: #274901;
+    color: #999;
 }
 
 .main-footer-img {
@@ -219,18 +213,13 @@ body {
     position: relative;
     height: 70px;
     width:100%;
-    text-align:center; /*выравнивание текста внутри колонок*/
-    column-count: 3; /*количество колонок, на которое хотим разбить текст*/
-    -moz-column-count: 3;/* для мозилы*/
-    -webkit-column-count: 3;/* для webkit браузеров*/
-    column-gap: 40px; /*отступ между колонками*/
-    -moz-column-gap: 40px;
-    -webkit-column-gap: 40px;
-    column-rule: 1px solid #478500/*если требуется по дизайну, разделяем колонки линией*/
-    -moz-column-rule: 1px solid #478500;
-    -webkit-column-rule: 1px solid #478500;
 }
 
+.main-footer-content p {
+    float: left;
+    width: 30%;
+    margin-left: 3%;
+}
 
 .button {
     vertical-align:middle;
@@ -240,22 +229,22 @@ body {
     display: inline-block;
     font-size: 1.2em;
     font-weight: 700;
-    color: #274901;
-    border: 2px #274901 solid;
+    color: #fff;
+    border: 2px #000 solid;
     text-decoration: none;
     text-shadow: 0 -1px 2px rgba(0,0,0,.2);
     padding: .5em 1em;
     outline: none;
-    background: #a4ea2c;
+    background: #888;
     border-radius: 15px;
 }
 .button:hover {
-    background: #CDFC7E;
+    background: #AAA;
     color: ;
 }
 .button:active {
     top: 1px;
-    background: #72A120;
+    background: #444;
 }
 
 .button:hover {cursor:pointer}

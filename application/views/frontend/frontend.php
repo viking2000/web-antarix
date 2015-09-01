@@ -29,15 +29,13 @@
         </div>
     </div>
     <div class="main-header-logo">
-        <img height="190" src="<?=image_url('pages/Logo.png');?>" />
-        <h1><?=get_string('pages', 'amanita')?></h1>
+        <h1><?=get_string('pages', 'logo')?></h1>
     </div>
-    <img height="50" class="main-header-arrow" src="<?=image_url('pages/arrow.png');?>" />
 </header>
 <?php
     if ( isset($submenu) )
     {
-        echo "<section class=\"main-submenu\"><div class=\"main\">{$submenu}</div><div class=\"clean dentateLine\"></div></section>";
+        echo "<section class=\"main-submenu\"><div class=\"main\">{$submenu}</div></section>";
     }
 ?>
 <div class="main-contentBlock">
@@ -52,12 +50,9 @@
             <?=isset($right)? $right : ''; ?>
         </aside>
     </div>
-<br class="clear" />
+    <br class="clear" />
 </div>
 <div class="additional-contentBlock">
-    <div class="main">
-        <script type="text/javascript" src="//yastatic.net/share/share.js" charset="utf-8"></script><div class="yashare-auto-init" data-yashareL10n="en" data-yashareType="small" data-yashareQuickServices="vkontakte,facebook,twitter,odnoklassniki,moimir,moikrug,gplus" data-yashareTheme="counter"></div>
-    </div>
     <br class="clean"/>
     <div class="wrapper">
         <aside class="sideLeft">
@@ -74,9 +69,7 @@
 <br class="clean"/>
 <!-- Footer -->
 <footer class="main-footer">
-    <img class="main-footer-img" height="100" src="<?=image_url('pages/Amanita.png');?>" />
     <div class="main-header-line"></div>
-    <div class="main-header-green" style="height: 75px;">
         <div class="main-footer-content">
             <p>
                 <strong>
@@ -85,7 +78,7 @@
                 <br />
                 <a href="<?=base_url('special/contacts');?>"><?=get_string('pages', 'feedback')?></a>
             </p>
-            <p>
+            <p class="main-footer-content-centre">
                 <strong><?=get_string('pages', 'navigation')?></strong>
                 <br />
                 <a href="<?=base_url('special/sitemap');?>"><?=get_string('pages', 'site_map')?></a>

@@ -15,7 +15,7 @@
     font-size: .9em;
     height: 1.3em;
     margin-right: -10px;
-    text-decoration:none
+    text-decoration:none;
 }
 
 .path_dispatcher-item:hover{
@@ -35,9 +35,13 @@
 }
 
 .path_dispatcher-item-center {
+    max-width: 150px;
     float: left;
     height: 1.3em;
     background: url('../images/widgets/menu/center.png') repeat-x center;
+    white-space: nowrap; /* Отменяем перенос текста */
+    overflow: hidden; /* Обрезаем содержимое */
+    text-overflow: ellipsis; /* Многоточие */
 }
 
 .path_dispatcher-item-before {

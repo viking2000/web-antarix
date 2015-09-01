@@ -23,7 +23,7 @@ class Files extends Controller
             ob_end_clean();
         }
 
-        sleep(5);
+        sleep(4);
         // заставляем браузер показать окно сохранения файла
         header('Content-Description: File Transfer');
         header('Content-Type: application/octet-stream');

@@ -36,7 +36,7 @@ function list__poly_block( array $options = array() )
 
         if ( ! empty($item['img_title']) )
         {
-            $img_link = base_url($item['img_title']);
+            $img_link = image_url($item['img_title']);
         }
 
         if ( ! empty($item['link']) )

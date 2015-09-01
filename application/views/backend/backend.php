@@ -1,5 +1,5 @@
 <section class="topToolBar">
-    <a href="http://www.example.ru/ru/wx-editpanel"><div class="toolbar_button" id="menu">Menu</div></a>
+    <a href="<?=config('settings', 'base_url');?>ru/wx-editpanel"><div class="toolbar_button" id="menu">Menu</div></a>
     <div class="toolbar_button" id="reset-cache">Cache reset</div>
     <div class="toolbar_button" id="reset-session">Session reset</div>
     <div class="toolbar_button" id="clean-errors">Clean errors</div>
